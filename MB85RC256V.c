@@ -41,7 +41,7 @@ bool vMB85RC256VWrite( MB85RC256V* ptr, uint16_t addr, uint8_t* data, size_t len
     }
 }
 
-bool vMB85RC256Read( MB85RC256V* ptr, uint16_t addr, uint8_t* data, size_t len )
+bool vMB85RC256VRead( MB85RC256V* ptr, uint16_t addr, uint8_t* data, size_t len )
 {
     uint8_t payload[] = 
     { 

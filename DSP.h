@@ -22,12 +22,23 @@
 /* MATLAB includes. */
 #include "grad_desc_4.h"
 
-#define CONTROL_I               ( 2 )       /* Number of possible sensors. */
-#define CONTROL_OX_INIT_MULT    ( 10.0f )   /* Multiplier needed to initialize the assumed distance between robot and opponent. Needed for gradient descent. */      
+#define CONTROL_I                       ( 2 )       /* Number of possible tracking sensors. */
+#define CONTROL_BORDER_TOTAL            ( 2 )       /* Number of possible border detection sensors. */
+#define CONTROL_BORDER_FRONT_INDEX      ( 0 )
+#define CONTROL_BORDER_BACK_INDEX       ( 1 )
+#define CONTROL_OX_INIT_MULT            ( 10.0f )   /* Multiplier needed to initialize the assumed distance between robot and opponent. Needed for gradient descent. */      
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+    
+    typedef enum ControlBorder
+    {
+        ControlBorder_NO_BORDER_DETECTED,
+        ControlBorder_BORDER_DETECTED_FRONT,
+        ControlBorder_BORDER_DETECTED_BACK
+    }
+    ControlBorder;
 
     /** @brief Exponentially Weighted Moving Average filter object. */
     typedef struct EWMA
@@ -52,8 +63,16 @@ extern "C" {
         float e_total_max;          /**< PID: Maximum magnitude of total error. */
         float e_prev;               /**< PID: Previous error. */
         float Kp, Ki, Kd;           /**< PID: Parameters of controller. */
+        float Ox_max;               
+        float Ox_detect;
     }
     Control;
+    
+    typedef struct Border
+    {
+        float Bt;
+    }
+    Border;
     
     /**
      * @brief Configure an EWMA object.
@@ -105,7 +124,8 @@ extern "C" {
      */
     void vControlSetup( Control* ptr, int iter_max, float R,
             float check, float d, 
-            float desc, float e_total_max, float Kp, float Ki, float Kd );
+            float desc, float e_total_max, float Kp, float Ki, float Kd,
+            float Ox_max, float Ox_detect );
     
     /**
      * @brief Runs an iteration of the Tracking Algorithm. 
@@ -113,8 +133,23 @@ extern "C" {
      * @param D Sensor values.
      * @param theta_update The angle needed to update the robot's current orientation.
      */
-    void vControlUpdate( Control* ptr, const float* D, float* theta_update );
-
+    void vControlUpdate( Control* ptr, 
+            const float* D, float* theta_update, float* Ox_update, bool* detect_update  );
+    
+    
+    static inline  __attribute__ ((always_inline))
+    void vControlSetOxMax( Control* ptr, float Ox_max )
+    {
+        ptr->Ox_max = Ox_max;
+    }
+    
+    static inline  __attribute__ ((always_inline))
+    void vBorderSetup( Border* ptr, float Bt )
+    {
+        ptr->Bt = Bt;
+    }
+    
+    void vBorderUpdate( Border* ptr, const float* B, ControlBorder* border_update );
 #ifdef __cplusplus
 }
 #endif

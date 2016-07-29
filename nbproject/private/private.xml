@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Andrew%20Powell/Documents/Sac%20Sumo%20Competition%202017/mplab/18_PROTO_2/I2CExt.c</file>
+            <file>file:/C:/Users/Andrew%20Powell/Documents/Sac%20Sumo%20Competition%202017/mplab/18_PROTO_2/portable.h</file>
+            <file>file:/C:/Users/Andrew%20Powell/Documents/Sac%20Sumo%20Competition%202017/mplab/18_PROTO_2/FreeRTOSConfig.h</file>
+            <file>file:/C:/Users/Andrew%20Powell/Documents/Sac%20Sumo%20Competition%202017/mplab/18_PROTO_2/main.c</file>
+            <file>file:/C:/Users/Andrew%20Powell/Documents/Sac%20Sumo%20Competition%202017/mplab/18_PROTO_2/port.c</file>
+            <file>file:/C:/Users/Andrew%20Powell/Documents/Sac%20Sumo%20Competition%202017/mplab/18_PROTO_2/portmacro.h</file>
+        </group>
     </open-files>
 </project-private>

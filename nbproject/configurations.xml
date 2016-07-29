@@ -61,7 +61,6 @@
       <itemPath>linear_transform_1_types.h</itemPath>
       <itemPath>grad_desc_4.c</itemPath>
       <itemPath>grad_desc_4.h</itemPath>
-      <itemPath>grad_desc_4_types.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

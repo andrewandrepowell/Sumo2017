@@ -125,7 +125,13 @@ extern "C" {
      * @return A value indicating whether or not the transaction is successful. Should
      * only return either true or false.
      */
-    bool vMB85RC256Read( MB85RC256V* ptr, uint16_t addr, uint8_t* data, size_t len );
+    bool vMB85RC256VRead( MB85RC256V* ptr, uint16_t addr, uint8_t* data, size_t len );
+    
+    static inline  __attribute__ ((always_inline)) 
+    void* ptrMB85RC256GetParam( MB85RC256V* ptr ) 
+    {
+        return ptr->param;
+    }
     
 #ifdef __cplusplus
 }

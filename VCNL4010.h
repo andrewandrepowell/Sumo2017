@@ -35,6 +35,7 @@
 #define VCNL4010_REG_CMD_PROX_EN                ( 1 )       /* Proximity Periodic Measurement enable bit offset. */
 #define VCNL4010_REG_CMD_SELF_TIMED_EN          ( 0 )       /* Enables hardware necessary for self-timed measurements. */
 
+#define VCNL4010_REG_IRLED_DEF_CURR             ( 2 )       /* Default current for current. */
 #define VCNL4010_REG_IRLED_MAX_CURR             ( 20 )      /* Integer signifying the maximum current ( i.e. 20 mA ) for the IR LED Current Register. */
 
 #define VCNL4010_REG_PROX_MOD_TIM_ADJ_DEF		( 0x01 )    /* Default values for the Proximity Modulator Timing Adjustment Register. */
